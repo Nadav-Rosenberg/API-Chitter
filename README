@@ -31,3 +31,10 @@ Starting a project:
 
 Tesing
 - think of the MVP and test
+- sketched out post request problem in server
+- built first feature test for posting a peep
+
+- troubleshooting database setup:
+  - make sure modles are required correctly
+  - make sure order of database setup is correct
+    - setup db, require modles, finalize db, upgrade db
