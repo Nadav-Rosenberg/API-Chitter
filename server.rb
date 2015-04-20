@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'data_mapper'
-
+require 'bcrypt'
 require './lib/peep'
 require './lib/user'
 
