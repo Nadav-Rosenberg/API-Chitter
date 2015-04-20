@@ -6,6 +6,5 @@ curl --verbose -d '{ "template":
  }
 }' -H "Content-Type: application/vnd.collection+json" "http://www.youtypeitwepostit.com/api/"
 
-curl --data "peep=This+is+a+second+test+peep" http://localhost:9292/api/new_peep
+curl --data "peep=This+is+a+third+test+peep" http://localhost:9292/api/new_peep
 
-curl --verbose -i "http://localhost:9292/api/all_peeps"

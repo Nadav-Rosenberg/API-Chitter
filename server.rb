@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'data_mapper'
 
 require './lib/peep'
+require './lib/user'
+
 require_relative 'data_mapper_setup'
 
 class APIChitter < Sinatra::Base
@@ -23,4 +25,18 @@ class APIChitter < Sinatra::Base
     end
     peeps
   end
+  
+  post '/api/sign_up' do
+    p params
+    email = params[:email]
+    name = params[:name]
+    user_name = params[:user_name]
+    password = params[:password] 
+
+    User.create(email: email,
+                name: name,
+                user_name: user_name,
+                password: password) 
+  end
+
 end
