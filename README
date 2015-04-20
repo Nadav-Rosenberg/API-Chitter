@@ -1,0 +1,18 @@
+API Chiiter: 
+
+Building micro-blogging site. Creating seperate backend and frontend. 
+
+4 days project: 
+Day 1 + Day 2: bulding a backend API using Postgres, DataMapper, and Rspec
+Day 3: cearing a one page frotend, using JS, jQuery, AJAX, and JSON
+Day 4: making a beatiful frontend using CSS
+
+Functionality of the service: 
+
+1. sign up
+2. sign in 
+3. sign out
+4. post a peep
+5. reply to a peep 
+6. see peeps 
+7. (forger password) 
