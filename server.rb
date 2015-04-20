@@ -1,17 +1,8 @@
 require 'sinatra/base'
 require 'data_mapper'
 
+require './lib/peep'
 require_relative 'data_mapper_setup'
-
-# env = ENV['RACK_ENV'] || 'development'
-
-# DataMapper.setup(:default, "postgres://localhost/apichitter_#{env}")
-
-# require './lib/peep'
-
-# DataMapper.finalize
-
-# DataMapper.auto_upgrade!
 
 class APIChitter < Sinatra::Base
   get '/' do
@@ -19,6 +10,7 @@ class APIChitter < Sinatra::Base
   end
 
   post '/api/new_peep' do
+    p params
     peep = params[:peep]
     Peep.create(content: peep)
   end  
