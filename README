@@ -16,3 +16,18 @@ Functionality of the service:
 5. reply to a peep 
 6. see peeps 
 7. (forger password) 
+
+Reflections: 
+
+Starting a project: 
+- Gemfile
+- $ bundle 
+- Rakefile 
+- server.rb
+- $ rakup
+- config.ru
+- add a database 
+- data_mapper_setup
+
+Tesing
+- think of the MVP and test
