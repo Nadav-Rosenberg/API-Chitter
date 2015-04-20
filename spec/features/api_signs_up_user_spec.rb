@@ -9,6 +9,13 @@ feature 'Signing up to Chitter' do
     expect(user.name).to eq("Test")
     expect(user.user_name).to eq("Testy")
     expect(user.password).to eq("123")
-  end  
+  end
+
+  scenario "user siging up with a name that is take returns an error message" do
+    page.driver.post "api/sign_up", request
+    response = page.driver.post "api/sign_up", request
+    expect(response.body).to eq("user name already taken")
+
+  end
 
 end

@@ -33,10 +33,13 @@ class APIChitter < Sinatra::Base
     user_name = params[:user_name]
     password = params[:password] 
 
-    User.create(email: email,
+    user = User.create(email: email,
                 name: name,
                 user_name: user_name,
-                password: password) 
+                password: password)
+    unless user.save
+      user.errors.full_messages
+    end
   end
 
 end
