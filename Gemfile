@@ -1,8 +1,8 @@
-source 'htttps://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'data_mapper'
-gem 'dm_postgres_adapter'
+gem 'dm-postgres-adapter'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
