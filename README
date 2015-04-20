@@ -45,3 +45,7 @@ Testing
 CURL
 - to post from the comand line using curl use the following format
 curl --data "peep=This+is+a+second+test+peep" http://localhost:9292/api/new_peep
+
+
+Post Request
+- every post request triggers a response from the server, which can be read by using the method .body

@@ -8,7 +8,6 @@ feature 'Signing up to Chitter' do
     expect(user.email).to eq("test@test.com")
     expect(user.name).to eq("Test")
     expect(user.user_name).to eq("Testy")
-    expect(user.password).to eq("123")
   end
 
   scenario "user siging up with a name that is take returns an error message" do
@@ -18,8 +17,8 @@ feature 'Signing up to Chitter' do
   end
 
   scenario "user sings up with passwords that does not match" do
-  response = page.driver.post "api/sign_up", "email=test@test.com&name=Test&user_name=Testy&password=123&password_confirmation=wrong"
-  expect(response.body).to eq("passwords don't match")
-  end  
+    response = page.driver.post "api/sign_up", "email=test@test.com&name=Test&user_name=Testy&password=123&password_confirmation=wrong"
+    expect(response.body).to eq("passwords don't match")
+  end
 
 end

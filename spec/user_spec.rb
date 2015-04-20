@@ -9,12 +9,19 @@ describe User do
     expect { add_user }.to change(described_class, :count).by(0)
   end
 
+  it 'doesnt save the password as plain text in the database' do
+    user = add_user
+    user.attributes.values.each do |att|
+      expect(att.to_s).not_to eq('zzz')
+    end
+  end
+
 end
 
 def add_user
   User.create(email: "test@test.com",
               name: "Test",
               user_name: "Testy",
-              password: "123", 
-              password_confirmation: "123")                   
+              password: "zzz", 
+              password_confirmation: "zzz")                   
 end
