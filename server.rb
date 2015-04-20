@@ -13,5 +13,14 @@ class APIChitter < Sinatra::Base
     p params
     peep = params[:peep]
     Peep.create(content: peep)
-  end  
+  end
+
+
+  get '/api/all_peeps' do
+    peeps = ''
+    Peep.all.each do |peep|
+      peeps << (peep.content + ' ')
+    end
+    peeps
+  end
 end
