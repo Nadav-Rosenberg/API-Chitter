@@ -1,0 +1,7 @@
+curl --verbose -d '{ "template":
+ {
+ "data": [
+ {"prompt": "Text of the message", "name": "text", "value": "API"}
+ ]
+ }
+}' -H "Content-Type: application/vnd.collection+json" "http://www.youtypeitwepostit.com/api/"

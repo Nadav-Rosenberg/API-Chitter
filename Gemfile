@@ -1,0 +1,13 @@
+source 'htttps://rubygems.org'
+
+gem 'sinatra'
+gem 'data_mapper'
+gem 'dm_postgres_adapter'
+gem 'capybara'
+gem 'rake'
+gem 'rspec'
+gem 'rubocop-rspec'
+gem 'rubocop'
+gem 'coveralls'
+gem 'launchy'
+gem 'database_cleaner'
