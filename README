@@ -29,7 +29,7 @@ Starting a project:
 - add a database 
 - data_mapper_setup
 
-Tesing
+Testing
 - think of the MVP and test
 - sketched out post request problem in server
 - built first feature test for posting a peep
@@ -38,3 +38,10 @@ Tesing
   - make sure modles are required correctly
   - make sure order of database setup is correct
     - setup db, require modles, finalize db, upgrade db
+
+- posting in capybara is page.driver.post "address to post to", "content to post"
+- the content to post needs to be encoded in HTTP post format "field_to_post_to=Content+to+post"
+
+CURL
+- to post from the comand line using curl use the following format
+curl --data "peep=This+is+a+second+test+peep" http://localhost:9292/api/new_peep
