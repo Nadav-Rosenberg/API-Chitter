@@ -44,4 +44,13 @@ class APIChitter < Sinatra::Base
     end
   end
 
+  post '/api/sign_in' do
+    email, password = params[:email], params[:password]
+    user = User.authenticate(email, password) 
+      if user 
+        "Welcome, #{user.user_name}!"
+      else  
+        "user details are incorrect" 
+      end  
+    end
 end
