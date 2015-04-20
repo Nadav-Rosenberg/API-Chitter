@@ -31,12 +31,14 @@ class APIChitter < Sinatra::Base
     email = params[:email]
     name = params[:name]
     user_name = params[:user_name]
-    password = params[:password] 
+    password = params[:password]
+    password_confirmation = params[:password_confirmation] 
 
     user = User.create(email: email,
                 name: name,
                 user_name: user_name,
-                password: password)
+                password: password,
+                password_confirmation: password_confirmation)
     unless user.save
       user.errors.full_messages
     end

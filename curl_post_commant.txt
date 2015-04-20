@@ -8,3 +8,5 @@ curl --verbose -d '{ "template":
 
 curl --data "peep=This+is+a+third+test+peep" http://localhost:9292/api/new_peep
 
+curl --data "email=test@test.com&name=Test&user_name=Nadav&password=123&password_confirmation=123" http://localhost:9292/api/sign_up
+ 

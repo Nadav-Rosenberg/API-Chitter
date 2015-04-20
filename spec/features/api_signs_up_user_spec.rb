@@ -15,7 +15,11 @@ feature 'Signing up to Chitter' do
     page.driver.post "api/sign_up", request
     response = page.driver.post "api/sign_up", request
     expect(response.body).to eq("user name already taken")
-
   end
+
+  scenario "user sings up with passwords that does not match" do
+  response = page.driver.post "api/sign_up", "email=test@test.com&name=Test&user_name=Testy&password=123&password_confirmation=wrong"
+  expect(response.body).to eq("passwords don't match")
+  end  
 
 end

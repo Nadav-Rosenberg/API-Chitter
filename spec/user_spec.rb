@@ -15,5 +15,6 @@ def add_user
   User.create(email: "test@test.com",
               name: "Test",
               user_name: "Testy",
-              password: "123")                   
+              password: "123", 
+              password_confirmation: "123")                   
 end
