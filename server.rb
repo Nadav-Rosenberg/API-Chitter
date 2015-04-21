@@ -9,6 +9,10 @@ require_relative 'data_mapper_setup'
 
 class APIChitter < Sinatra::Base
 
+options '/*' do
+  response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+end
+
   include Helpers
 
   enable :sessions
