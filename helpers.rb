@@ -45,7 +45,7 @@ module Helpers
   def all_peeps
     peeps = ''
     Peep.all.each do |peep|
-      peeps << ("#{peep.content} by #{peep.author} @#{peep.time.to_s[0..19]} ")
+      peeps << ("#{peep.content} by #{peep.author} @#{peep.time.to_s[0..18]} ")
     end
     peeps
   end  

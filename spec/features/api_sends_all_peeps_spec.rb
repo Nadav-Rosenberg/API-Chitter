@@ -7,7 +7,7 @@ feature 'the api sends all peeps' do
   scenario 'api recieves request for all peeps' do
     post_peep
     content = page.driver.get "api/all_peeps"
-    expect(content.body).to eq("This is a test peep by Testy @#{Time.now.to_s[0..19]} This is a test peep by Testy @#{Time.now.to_s[0..19]} ")
+    expect(content.body).to eq("This is a test peep by Testy @#{Time.now.to_s[0..18]} This is a test peep by Testy @#{Time.now.to_s[0..18]} ")
   
   end
 
