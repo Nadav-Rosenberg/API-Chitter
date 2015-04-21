@@ -49,3 +49,20 @@ curl --data "peep=This+is+a+second+test+peep" http://localhost:9292/api/new_peep
 
 Post Request
 - every post request triggers a response from the server, which can be read by using the method .body
+
+
+--Updated plan
+Day 2
+  -Finishing backend API, including sessions
+  - Today we want an MVP of the front end
+
+Day3 
+  -Finishing the front end 
+  - potentially start styling
+Day 4
+  additional features
+  - reply to a peep
+  - mobile/text interface
+  - Styling
+
+
