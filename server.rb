@@ -4,14 +4,15 @@ require 'bcrypt'
 require './lib/peep'
 require './lib/user'
 require './helpers'
+require "sinatra/cross_origin"
 
 require_relative 'data_mapper_setup'
 
 class APIChitter < Sinatra::Base
 
-options '/*' do
-  response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
-end
+  register Sinatra::CrossOrigin
+
+  enable :cross_origin
 
   include Helpers
 

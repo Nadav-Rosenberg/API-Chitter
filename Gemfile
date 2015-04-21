@@ -12,3 +12,5 @@ gem 'coveralls'
 gem 'launchy'
 gem 'database_cleaner'
 gem 'bcrypt'
+
+gem 'sinatra-cross_origin'
