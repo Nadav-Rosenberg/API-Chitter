@@ -9,10 +9,15 @@ context '*** Unit test ***' do
       expect(Peep.first.content).to eq("Test")
     end
 
+    it 'registers the time of the message' do
+      add_peep "Test"
+      expect(Peep.first.time).to eq(Time.now.to_s[0..-7])
+    end
+
   end
 
 end
 
 def add_peep message
-  Peep.create(content: message)
+  Peep.create(content: message, time: Time.now)
 end
