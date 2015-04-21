@@ -4,10 +4,15 @@ require 'bcrypt'
 require './lib/peep'
 require './lib/user'
 require './helpers'
+require "sinatra/cross_origin"
 
 require_relative 'data_mapper_setup'
 
 class APIChitter < Sinatra::Base
+
+  register Sinatra::CrossOrigin
+
+  enable :cross_origin
 
   include Helpers
 
