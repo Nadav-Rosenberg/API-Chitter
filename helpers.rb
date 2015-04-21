@@ -37,7 +37,7 @@ module Helpers
    p session
     if session[:user_id]
       peep = params[:peep]
-      Peep.create(content: peep)
+      Peep.create(content: peep, time: Time.now.to_time)
       'peep recieved'
     else
       'You must be signed in to peep!'
@@ -47,7 +47,7 @@ module Helpers
   def all_peeps
     peeps = ''
     Peep.all.each do |peep|
-      peeps << (peep.content + ' ')
+      peeps << (peep.content + ' @' + peep.time.to_s + ' ')
     end
     peeps
   end  
