@@ -4,4 +4,5 @@ class Peep
   property :id, Serial
   property :content, Text, lazy: false
   property :time, String
+  property :author, String
 end

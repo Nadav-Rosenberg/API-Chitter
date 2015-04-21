@@ -12,7 +12,7 @@ feature 'Posting a message to the database' do
     peep = Peep.first
     expect(peep.content).to eq("This is a test peep")
     page.driver.post "/api/sign_out"
-  end  
-
+  end 
+  
 end  
 

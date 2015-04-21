@@ -22,7 +22,6 @@ module Helpers
     user = User.authenticate(email, password) 
       if user
         session[:user_id] = user.id 
-       p session # --> print
         "Welcome, #{user.user_name}!"
       else  
         "user details are incorrect" 
@@ -34,10 +33,9 @@ module Helpers
   end
 
   def new_peep
-   p session
     if session[:user_id]
       peep = params[:peep]
-      Peep.create(content: peep, time: Time.now.to_time)
+      Peep.create(content: peep, time: Time.now.to_time, author: User.first(id: session[:user_id]).user_name)
       'peep recieved'
     else
       'You must be signed in to peep!'
@@ -47,7 +45,7 @@ module Helpers
   def all_peeps
     peeps = ''
     Peep.all.each do |peep|
-      peeps << (peep.content + ' @' + peep.time.to_s[0..-7] + ' ')
+      peeps << ("#{peep.content} by #{peep.author} @#{peep.time.to_s[0..-7]} ")
     end
     peeps
   end  
