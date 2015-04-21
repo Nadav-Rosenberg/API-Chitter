@@ -19,5 +19,5 @@ context '*** Unit test ***' do
 end
 
 def add_peep message
-  Peep.create(content: message, time: Time.now)
+  Peep.create(content: message, time: Time.now.to_s[0..-7])
 end
