@@ -10,7 +10,7 @@ feature 'Signing in to Chitter' do
 
   scenario 'user cannot peep if not signed in' do
     response = page.driver.post "/api/new_peep", peep_request
-   #expect(response.body).to eq('You must be signed in to peep!')
+    expect(response.body).to eq('You must be signed in to peep!')
     expect(Peep.all.empty?).to be(true)
   end
 
@@ -22,8 +22,13 @@ feature 'Signing in to Chitter' do
 
 
 
-  xscenario 'user can peep if signed in' do
+  scenario 'user can peep if signed in' do
     page.driver.post "/api/sign_up", sign_up_request
+    page.driver.post "/api/sign_in", sign_in_request
+    response = page.driver.post "/api/new_peep", peep_request
+    page.driver.post "/api/sign_out"
+    expect(Peep.first.content).to eq ("This is a test peep")
+    expect(response.body).to eq ("peep recieved")
   end
 
 end
