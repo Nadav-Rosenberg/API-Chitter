@@ -83,6 +83,8 @@ curl --data "email=rich@rich.com&name=Rich&user_name=Richi&password=123&password
 # Heruko
 curl --data "email=nadav@nadav.com&name=Nadav&user_name=Nad&password=123&password_confirmation=123" https://immense-beach-9973.herokuapp.com/api/sign_up
 
+curl --data "email=rich@rich.com&name=Rich&user_name=Rich&password=123&password_confirmation=123" https://immense-beach-9973.herokuapp.com/api/sign_up
+
 Sign In:
 curl -c cookies.txt --data "email=nadav@nadav.com&password=123" http://localhost:9292/api/sign_in
 #2 user
@@ -109,4 +111,3 @@ Sign Out:
 curl -c cookies.txt --data "" http://localhost:9292/api/sign_out
 #Heruko
 curl -c cookies.txt --data "" https://immense-beach-9973.herokuapp.com/api/sign_out
-
