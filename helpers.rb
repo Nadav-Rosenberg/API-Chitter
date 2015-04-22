@@ -1,3 +1,4 @@
+require 'json'
 module Helpers
 
   def sign_up
@@ -35,7 +36,7 @@ module Helpers
   def new_peep
     if session[:user_id]
       peep = params[:peep]
-      Peep.create(content: peep, time: Time.now.to_time, author: User.first(id: session[:user_id]).user_name)
+      Peep.create(content: peep, time: Time.now.to_s[0..18], author: User.first(id: session[:user_id]).user_name)
       'peep recieved'
     else
       'You must be signed in to peep!'
@@ -43,11 +44,11 @@ module Helpers
   end  
 
   def all_peeps
-    peeps = ''
+    peeps = []
     Peep.all.each do |peep|
-      peeps << ("#{peep.content} by #{peep.author} @#{peep.time.to_s[0..18]} /endofpeep/")
+      peeps << {text: peep.content, author: peep.author, time: peep.time}
     end
-    peeps
+    p JSON.generate(peeps)
   end  
 
 end  

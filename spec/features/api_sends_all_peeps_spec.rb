@@ -7,14 +7,14 @@ feature 'the api sends all peeps' do
   scenario 'api recieves request for all peeps' do
     post_peep
     content = page.driver.get "api/all_peeps"
-    expect(content.body).to eq("This is a test peep by Testy @#{Time.now.to_s[0..18]} /endofpeep/This is a test peep by Testy @#{Time.now.to_s[0..18]} /endofpeep/")
-
+    expect(content.body).to eq("[{\"text\":\"This is a test peep\",\"author\":\"Testy\",\"time\":\"#{Time.now.to_s[0..18]}\"},{\"text\":\"This is a test peep\",\"author\":\"Testy\",\"time\":\"#{Time.now.to_s[0..18]}\"}]")
   end
 
   scenario 'API sends peep with its author user_name' do
     post_peep
     expect(Peep.first.author).to eq("Testy")
   end 
+
 end 
 
 
