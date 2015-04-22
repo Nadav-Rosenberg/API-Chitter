@@ -38,12 +38,13 @@ module Helpers
   end
 
   def sign_out
+    puts "wtf"
     session[:user_id] = nil
   end
 
   def new_peep
     puts 'here'
-    p params["peep"]
+    p params
     p session[:user_id]
     if session[:user_id]
       peep = params["peep"]

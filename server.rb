@@ -18,6 +18,11 @@ class APIChitter < Sinatra::Base
 
   enable :sessions
 
+  get '/' do
+    send_file 'index.html'
+  end  
+
+
   post '/api/sign_up' do
     sign_up
   end
