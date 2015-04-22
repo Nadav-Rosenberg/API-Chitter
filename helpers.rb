@@ -19,14 +19,22 @@ module Helpers
   end
 
   def sign_in
-    email, password = params[:email], params[:password]
+    p params
+    p params["email"]
+    email, password = params["email"], params["password"]
     user = User.authenticate(email, password) 
       if user
+        puts "Success"
         session[:user_id] = user.id 
-        "Welcome, #{user.user_name}!"
+        p session[:user_id]
+        message = {message: "Welcome, #{user.user_name}!"}
+        JSON.generate(message)
       else  
         "user details are incorrect" 
-      end  
+      end
+
+    p session[:user_id]
+    ""  
   end
 
   def sign_out
@@ -34,8 +42,11 @@ module Helpers
   end
 
   def new_peep
+    puts 'here'
+    p params["peep"]
+    p session[:user_id]
     if session[:user_id]
-      peep = params[:peep]
+      peep = params["peep"]
       Peep.create(content: peep, time: Time.now.to_s[0..18], author: User.first(id: session[:user_id]).user_name)
       'peep recieved'
     else
