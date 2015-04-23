@@ -13,16 +13,15 @@
 <div id="container">
 
   <div id="header">
-    <button id="signUpToggle">Sign Up</button>
 
     <form id="signIn" action="/api/sign_in" title="" method="post">
             <div>
                 Email: <input type="text" id="sIemail" name="email" >
-                Passowrd: <input type="password" id="sIpassword" name="password" >
+                Password: <input type="password" id="sIpassword" name="password" >
                 <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
             </div>
     </form>
-    
+
       <form id="signUp" action="/api/sign_up" title="" method="post">
             <div>
                 Email: <input type="text" id="email" name="email" >
@@ -40,6 +39,9 @@
         <input type="submit" id="submitButton"  name="submitSignOut" value="Sign Out">
       </div>
     </form>
+
+    <button id="signUpToggle">Sign Up</button>
+
   </div>
 
 
@@ -80,6 +82,8 @@ function reloadPeeps(){
 <script>
   $('#signUpToggle').click(function(event){
     $('#signUp').fadeToggle();
+    $('#signIn').hide();
+    $('#sign_out').hide();
     $('#signUpToggle').hide();
   });
 </script>
@@ -95,6 +99,8 @@ function reloadPeeps(){
       var obj = { email: $('#email').val(), password: $('#password').val() };
       var posting = $.post( url, obj );
       $('#signUp').hide();
+      $('#signIn').show();
+      $('#sign_out').show();
       $('#signUpToggle').show();
     });
 </script>
