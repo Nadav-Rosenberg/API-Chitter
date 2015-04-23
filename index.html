@@ -1,34 +1,59 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
  <!--  // <script type="text/javascript" src="public/src/Chitter.js"></script> -->
+ <link rel="stylesheet" type="text/css" href="css/reset.css">
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
- <script>
- $(document).ready(function() {
-  $.getJSON( "http://localhost:9292//api/all_peeps", function( data ) {
-      var peep_string = '<ul>'
-    for (var i = 0; i < data.length; i++) {
+</head>
 
-        peep_string = peep_string.concat('<li>',data[i]["text"],' by ',data[i]["author"],' at ',data[i]["time"],'</li>');
-    };
-    peep_string.concat('</ul>');
-    $('#peepList').html(peep_string);
-  });
+<body>
+
+
+
+
+    <form id="signUp" action="/api/sign_up" title="" method="post">
+          <div>
+              Email: <input type="text" id="email" name="email" >
+              Name: <input type="text" id="name" name="name" >
+              User Name: <input type="text" id="userName" name="userName" >
+              Password: <input type="password" id="password" name="password" >
+              Password Confirmation: <input type="password" id="passwordConfirmation" name="passwordConfirmation" >
+              <input type="submit" id="submitButton"  name="submitButton" value="Sign Up">
+          </div>
+  </form>
+
+  <form id="signIn" action="/api/sign_in" title="" method="post">
+          <div>
+              Email: <input type="text" id="sIemail" name="email" >
+              Passowrd: <input type="password" id="sIpassword" name="password" >
+              <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
+          </div>
+  </form>
+
+  <form id="peep" action="/api/new_peep" title="" method="post">
+          <div>
+              Peep: <input type="text" id="peepText" name="peep" >
+              <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
+          </div>
+  </form>
+
+   <form id="sign_out" action="/api/sign_out" title="" method="get">
+          <div>
+              <input type="submit" id="submitButton"  name="submitSignOut" value="Sign Out">
+          </div>
+  </form>
+
+  <div id="peepList"></div>
+
+/* SCRIPTS BELOW */
+
+<script>
+  $(document).ready(function() {
+    reloadPeeps();
 });
 
-// setInterval(function(){
-// $.getJSON( "http://localhost:9292//api/all_peeps", function( data ) {
-//     var peep_string = '<ul>'
-//   for (var i = 0; i < data.length; i++) {
-
-//       peep_string = peep_string.concat('<li>',data[i]["text"],' by ',data[i]["author"],' at ',data[i]["time"],'</li>');
-//   };
-//   peep_string.concat('</ul>');
-//   $('#peepList').html(peep_string);
-// });
-// },6000);
- 
 function reloadPeeps(){
   $.getJSON( "/api/all_peeps", function( data ) {
     var peep_string = '<ul>'
@@ -38,104 +63,55 @@ function reloadPeeps(){
     peep_string.concat('</ul>');
     $('#peepList').html(peep_string);
   });
-}
+};
+</script>
+
+<script type='text/javascript'>
+    $("#signUp").submit(function(event) {
+      event.preventDefault();
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+      var obj = { email: $('#email').val(), name: $('#name').val(), user_name: $('#userName').val(), password: $('#password').val(), password_confirmation: $('#passwordConfirmation').val() };
+      var posting = $.post( url, obj );
+          url = '/api/sign_in';
+      var obj = { email: $('#email').val(), password: $('#password').val() };
+      var posting = $.post( url, obj );
+    });
+</script>
+
+<script type='text/javascript'>
+    $("#signIn").submit(function(event) {
+      event.preventDefault();
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+      var obj = { email: $('#sIemail').val(), password: $('#sIpassword').val() };
+      var posting = $.post( url, obj );
+      posting.done(function( data ) {
+      });
+    });
+</script>
+
+<script type='text/javascript'>
+    $("#peep").submit(function(event) {
+      event.preventDefault();
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+      var posting = $.post( url, { peep: $('#peepText').val() } );
+      posting.done(function( data ) {
+        reloadPeeps();
+      });
+    });
  </script>
 
-</head>
-
-<body>
-
-    <form id="signUp" action="/api/sign_up" title="" method="post">
-          <div>
-              Email: <input type="text" id="email" name="email" >
-              Name: <input type="text" id="name" name="name" >  
-              User Name: <input type="text" id="userName" name="userName" >          
-              Password: <input type="password" id="password" name="password" >
-              Password Confirmation: <input type="password" id="passwordConfirmation" name="passwordConfirmation" >
-              <input type="submit" id="submitButton"  name="submitButton" value="Sign Up">
-          </div>
-  </form>
-  <script type='text/javascript'>
-      $("#signUp").submit(function(event) {
-        event.preventDefault();
-        var $form = $( this ),
-            url = $form.attr( 'action' );
-        var obj = { email: $('#email').val(), name: $('#name').val(), user_name: $('#userName').val(), password: $('#password').val(), password_confirmation: $('#passwordConfirmation').val() };
-        var posting = $.post( url, obj );
-        // posting.done(function( data ) {
-           
-            url = '/api/sign_in';
-        var obj = { email: $('#email').val(), password: $('#password').val() };
-        var posting = $.post( url, obj );
-      //   posting.done(function( data ) {
-      
-      // }); 
-
-        //   alert('success');
-        // });
+<script type='text/javascript'>
+    $("#sign_out").submit(function(event) {
+      event.preventDefault();
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+      var posting = $.post( url );
+      posting.done(function( data ) {
       });
-  </script>
-
-  <form id="signIn" action="/api/sign_in" title="" method="post">
-          <div>
-              Email: <input type="text" id="sIemail" name="email" >          
-              Passowrd: <input type="password" id="sIpassword" name="password" >
-              <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
-          </div>
-  </form>
-  <script type='text/javascript'>
-      $("#signIn").submit(function(event) {
-        event.preventDefault();
-        var $form = $( this ),
-            url = $form.attr( 'action' );
-        var obj = { email: $('#sIemail').val(), password: $('#sIpassword').val() };
-        var posting = $.post( url, obj );
-        posting.done(function( data ) {
-          alert('success');
-        });
-      });
-  </script>
-
-  <form id="peep" action="/api/new_peep" title="" method="post">
-          <div>
-              Peep: <input type="text" id="peepText" name="peep" >          
-              <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
-          </div>
-  </form>
-  <script type='text/javascript'>
-      $("#peep").submit(function(event) {
-        event.preventDefault();
-        var $form = $( this ),
-            url = $form.attr( 'action' );
-        var posting = $.post( url, { peep: $('#peepText').val() } );
-        console.log(posting);
-        posting.done(function( data ) {
-          reloadPeeps();
-          // should change method if we're signed out
-          alert('Peep recieved');
-        });
-      });
-   </script>
-
-   <form id="sign_out" action="/api/sign_out" title="" method="get">
-          <div>       
-              <input type="submit" id="submitSignOut"  name="submitSignOut" value="Sign Out">
-          </div>
-  </form>
-  <script type='text/javascript'>
-      $("#sign_out").submit(function(event) {
-        event.preventDefault();
-        var $form = $( this ),
-            url = $form.attr( 'action' );
-        var posting = $.post( url );
-        posting.done(function( data ) {
-          alert('Signed Out');
-        });
-      });
-   </script>
-
-
-
-  <div id="peepList">Hello and Welcome to Chitter!!! THese are the recent messages</div>
+    });
+</script>
 </body>
 </html>
