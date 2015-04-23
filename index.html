@@ -46,8 +46,8 @@
 
   </div>
 
-
   <div id="peepContainer">
+    <div id="peepAlert"></div>
     <div id="makePeep">
       <form id="peep" action="/api/new_peep" title="" method="post">
               <div>
@@ -136,6 +136,12 @@ function reloadPeeps(){
         var status = posting.responseText;
         if(status == 'You must be signed in to peep!'){
           alert(status);
+        }else{
+          $('#peepAlert').show();
+          $('#peepAlert').text(status);
+          setInterval(function () {
+          $('#peepAlert').hide();
+          }, 3000);
         };
       });
     });
