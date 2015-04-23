@@ -44,14 +44,17 @@
 
     <button id="signUpToggle">Sign Up</button>
 
+    <div id="logoText">CHITTER</div>
+
   </div>
 
 
   <div id="peepContainer">
+
     <div id="makePeep">
       <form id="peep" action="/api/new_peep" title="" method="post">
-              <div>
-                  Peep: <input type="text" id="peepText" name="peep" >
+              <div id="peepInput">
+                  <input type="text" id="peepText" name="peep"><br>
                   <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
               </div>
       </form>
@@ -135,7 +138,7 @@ function reloadPeeps(){
         reloadPeeps();
       });
     });
- </script>
+</script>
 
 <script type='text/javascript'>
     $("#sign_out").submit(function(event) {
@@ -152,5 +155,6 @@ function reloadPeeps(){
       });
     });
 </script>
+
 </body>
 </html>

@@ -1,21 +1,44 @@
+@font-face{
+  font-family: velo_reg;
+  src:url("/VelodromaBasic-Regular.otf");
+}
+
+@font-face{
+  font-family: velo_super;
+  src:url("/VelodromaBasic-SuperWide.otf");
+}
+
 #container {
+  font-family: velo_reg;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #278EC4;
+  background: #67ABCE;
 }
 
 #header {
   position: fixed;
-  height: 50px;
+  height: 80px;
   width: 100%;
   background-color: #E8F7FF;
   border-top: 10px solid #278EC4;
-  border-bottom: 40px solid #278EC4;
+  border-bottom: 20px solid #479EC9;
+  display:table-cell;
+  vertical-align:middle;
 }
 
-#signIn, #signUp, #sign_out, #welcomeMessage{
+#signIn, #signUp, #sign_out, #welcomeMessage {
+  font-family: velo_reg;
   display: inline-block;
+}
+
+#logoText {
+  font-family: velo_reg;
+  font-size: 34px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 266px;
 }
 
 #peepContainer {
@@ -32,3 +55,27 @@
   background: blue;
   color: white;
 }*/
+
+#makePeep, #peepText {
+  width: 78%;
+  margin: 20px;
+  margin-left: auto;
+}
+
+#submitPeep {
+  font-style: italic;
+  width: 20%;
+  margin-left: 105px;
+  /*margin-right: auto;*/
+}
+
+li {
+  background: white;
+  width: 80%;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  border-radius: 2px;
+  padding: 10px;
+}
