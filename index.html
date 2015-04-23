@@ -45,6 +45,37 @@ function reloadPeeps(){
 
 <body>
 
+    <form id="signUp" action="/api/sign_up" title="" method="post">
+          <div>
+              Email: <input type="text" id="email" name="email" >
+              Name: <input type="text" id="name" name="name" >  
+              User Name: <input type="text" id="userName" name="userName" >          
+              Password: <input type="password" id="password" name="password" >
+              Password Confirmation: <input type="password" id="passwordConfirmation" name="passwordConfirmation" >
+              <input type="submit" id="submitButton"  name="submitButton" value="Sign Up">
+          </div>
+  </form>
+  <script type='text/javascript'>
+      $("#signUp").submit(function(event) {
+        event.preventDefault();
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        var obj = { email: $('#email').val(), name: $('#name').val(), user_name: $('#userName').val(), password: $('#password').val(), password_confirmation: $('#passwordConfirmation').val() };
+        var posting = $.post( url, obj );
+        // posting.done(function( data ) {
+           
+            url = '/api/sign_in';
+        var obj = { email: $('#email').val(), password: $('#password').val() };
+        var posting = $.post( url, obj );
+      //   posting.done(function( data ) {
+      
+      // }); 
+
+        //   alert('success');
+        // });
+      });
+  </script>
+
   <form id="signIn" action="/api/sign_in" title="" method="post">
           <div>
               Email: <input type="text" id="email" name="email" >          

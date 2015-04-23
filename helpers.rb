@@ -2,11 +2,11 @@ require 'json'
 module Helpers
 
   def sign_up
-    email = params[:email]
-    name = params[:name]
-    user_name = params[:user_name]
-    password = params[:password]
-    password_confirmation = params[:password_confirmation] 
+    email = params["email"]
+    name = params["name"]
+    user_name = params["user_name"]
+    password = params["password"]
+    password_confirmation = params["password_confirmation"] 
 
     user = User.create(email: email,
                 name: name,
@@ -14,6 +14,7 @@ module Helpers
                 password: password,
                 password_confirmation: password_confirmation)
     unless user.save
+      puts "Failure"
       user.errors.full_messages
     end
   end
