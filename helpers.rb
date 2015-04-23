@@ -46,7 +46,7 @@ module Helpers
 
   def all_peeps
     peeps = []
-    Peep.all.each do |peep|
+    Peep.all.reverse_each do |peep|
       peeps << {text: peep.content, author: peep.author, time: peep.time}
     end
     JSON.generate(peeps)
