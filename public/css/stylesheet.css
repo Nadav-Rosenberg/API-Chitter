@@ -1,7 +1,32 @@
-body {
-  background: red;
+#container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #278EC4;
 }
 
+#header {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #E8F7FF;
+  border-top: 10px solid #278EC4;
+  border-bottom: 40px solid #278EC4;
+}
+
+#signIn, #signUp, #sign_out {
+  display: inline-block;
+}
+
+#peepContainer {
+  width: 500px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #E8F7FF;
+  margin-top: 100px;
+  border-radius: 3px;
+}
 #submitButton {
   background: blue;
   color: white;

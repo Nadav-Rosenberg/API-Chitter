@@ -10,48 +10,59 @@
 
 <body>
 
+<div id="container">
+
+  <div id="header">
+    <button id="signUpToggle">Sign Up</button>
+
+    <form id="signIn" action="/api/sign_in" title="" method="post">
+            <div>
+                Email: <input type="text" id="sIemail" name="email" >
+                Passowrd: <input type="password" id="sIpassword" name="password" >
+                <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
+            </div>
+    </form>
+    
+      <form id="signUp" action="/api/sign_up" title="" method="post">
+            <div>
+                Email: <input type="text" id="email" name="email" >
+                Name: <input type="text" id="name" name="name" >
+                User Name: <input type="text" id="userName" name="userName" >
+                Password: <input type="password" id="password" name="password" >
+                Password Confirmation: <input type="password" id="passwordConfirmation" name="passwordConfirmation" >
+                <input type="submit" id="submitButton"  name="submitButton" value="Sign Up">
+            </div>
+    </form>
 
 
+    <form id="sign_out" action="/api/sign_out" title="" method="get">
+      <div>
+        <input type="submit" id="submitButton"  name="submitSignOut" value="Sign Out">
+      </div>
+    </form>
+  </div>
 
-    <form id="signUp" action="/api/sign_up" title="" method="post">
-          <div>
-              Email: <input type="text" id="email" name="email" >
-              Name: <input type="text" id="name" name="name" >
-              User Name: <input type="text" id="userName" name="userName" >
-              Password: <input type="password" id="password" name="password" >
-              Password Confirmation: <input type="password" id="passwordConfirmation" name="passwordConfirmation" >
-              <input type="submit" id="submitButton"  name="submitButton" value="Sign Up">
-          </div>
-  </form>
 
-  <form id="signIn" action="/api/sign_in" title="" method="post">
-          <div>
-              Email: <input type="text" id="sIemail" name="email" >
-              Passowrd: <input type="password" id="sIpassword" name="password" >
-              <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
-          </div>
-  </form>
+  <div id="peepContainer">
+    <div id="makePeep">
+      <form id="peep" action="/api/new_peep" title="" method="post">
+              <div>
+                  Peep: <input type="text" id="peepText" name="peep" >
+                  <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
+              </div>
+      </form>
+    </div>
 
-  <form id="peep" action="/api/new_peep" title="" method="post">
-          <div>
-              Peep: <input type="text" id="peepText" name="peep" >
-              <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
-          </div>
-  </form>
+    <div id="peepList"></div>
+  </div>
+</div>
 
-   <form id="sign_out" action="/api/sign_out" title="" method="get">
-          <div>
-              <input type="submit" id="submitButton"  name="submitSignOut" value="Sign Out">
-          </div>
-  </form>
-
-  <div id="peepList"></div>
-
-/* SCRIPTS BELOW */
+<!-- SCRIPTS BELOW -->
 
 <script>
   $(document).ready(function() {
     reloadPeeps();
+    $('#signUp').hide();
 });
 
 function reloadPeeps(){
@@ -66,6 +77,13 @@ function reloadPeeps(){
 };
 </script>
 
+<script>
+  $('#signUpToggle').click(function(event){
+    $('#signUp').fadeToggle();
+    $('#signUpToggle').hide();
+  });
+</script>
+
 <script type='text/javascript'>
     $("#signUp").submit(function(event) {
       event.preventDefault();
@@ -76,6 +94,8 @@ function reloadPeeps(){
           url = '/api/sign_in';
       var obj = { email: $('#email').val(), password: $('#password').val() };
       var posting = $.post( url, obj );
+      $('#signUp').hide();
+      $('#signUpToggle').show();
     });
 </script>
 
