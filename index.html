@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<!--    // <script type="text/javascript" src="src/Chitter.js"></script>
+ -->
+</head>
+
+<body>
+
+  <form id="signIn" action="/api/sign_in" title="" method="post">
+          <div>
+              Email: <input type="text" id="email" name="email" >          
+              Passowrd: <input type="password" id="password" name="password" >
+              <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
+          </div>
+  </form>
+  <script type='text/javascript'>
+      $("#signIn").submit(function(event) {
+        event.preventDefault();
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        var obj = { email: $('#email').val(), password: $('#password').val() };
+        var posting = $.post( url, obj );
+        posting.done(function( data ) {
+          alert('success');
+        });
+      });
+  </script>
+
+  <form id="peep" action="/api/new_peep" title="" method="post">
+          <div>
+              Peep: <input type="text" id="peepText" name="peep" >          
+              <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
+          </div>
+  </form>
+  <script type='text/javascript'>
+      $("#peep").submit(function(event) {
+        event.preventDefault();
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        var posting = $.post( url, { peep: $('#peepText').val() } );
+        console.log(posting);
+        posting.done(function( data ) {
+          alert('Peep recieved');
+        });
+      });
+   </script>
+
+  <div id="peepList">Hello and Welcome to Chitter!!! THese are the recent messages</div>
+</body>
+</html>
