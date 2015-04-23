@@ -111,3 +111,22 @@ Sign Out:
 curl -c cookies.txt --data "" http://localhost:9292/api/sign_out
 #Heruko
 curl -c cookies.txt --data "" https://immense-beach-9973.herokuapp.com/api/sign_out
+
+
+Day 3 PM
+cookies can't be set from local files, which creates issues with sessions. Hosting the front end on the same server as the backend seems to 
+get round the problem, maybe due to rack holding the cookies???
+
+Learnt a lot about JSON and how to submit get and post requests to the server using jQuery
+
+Plan for day 4.
+Have alerts based on the servers responce to our get and post requests.
+
+Talk to a coach about reseperating the front and back end. Note: once the app is complete we could make a seperate rackup server for 
+the front end and deploy the front and back end to heroku seperatley so long as we remember to set all the request paths correctly.
+
+make a relation between users and peeps
+and be able to sort by users peeps
+
+questions for coaches:
+sessions, local host issue and seperating the front and back end more
