@@ -14,6 +14,8 @@
 
   <div id="header">
 
+    <p id="welcomeMessage"></p>
+
     <form id="signIn" action="/api/sign_in" title="" method="post">
             <div>
                 Email: <input type="text" id="sIemail" name="email" >
@@ -113,6 +115,12 @@ function reloadPeeps(){
       var obj = { email: $('#sIemail').val(), password: $('#sIpassword').val() };
       var posting = $.post( url, obj );
       posting.done(function( data ) {
+        var message = posting.responseText;
+        $('#welcomeMessage').html(JSON.parse(message)["message"]);
+        $('#signUpToggle').hide();
+        $('#signIn').hide();
+
+
       });
     });
 </script>
@@ -136,6 +144,11 @@ function reloadPeeps(){
           url = $form.attr( 'action' );
       var posting = $.post( url );
       posting.done(function( data ) {
+
+        $('#welcomeMessage').html("");
+        $('#signUpToggle').show();
+        $('#signIn').show();
+
       });
     });
 </script>

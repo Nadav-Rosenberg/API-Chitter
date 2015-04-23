@@ -14,7 +14,7 @@
   border-bottom: 40px solid #278EC4;
 }
 
-#signIn, #signUp, #sign_out {
+#signIn, #signUp, #sign_out, #welcomeMessage{
   display: inline-block;
 }
 

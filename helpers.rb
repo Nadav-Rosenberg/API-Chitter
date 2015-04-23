@@ -29,7 +29,7 @@ module Helpers
         message = {message: "Welcome, #{user.user_name}!"}
         JSON.generate(message)
       else  
-        "user details are incorrect" 
+        JSON.generate({message: "user details are incorrect"})
       end 
   end
 
