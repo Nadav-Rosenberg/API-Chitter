@@ -6,6 +6,8 @@
  <link rel="stylesheet" type="text/css" href="css/reset.css">
  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -44,15 +46,18 @@
 
     <button id="signUpToggle">Sign Up</button>
 
+    <div id="logoText">CHITTER</div>
+
   </div>
 
 
   <div id="peepContainer">
+
     <div id="makePeep">
       <form id="peep" action="/api/new_peep" title="" method="post">
-              <div>
-                  Peep: <input type="text" id="peepText" name="peep" >
-                  <input type="submit" id="submitPeep"  name="submitPeep" value="Peep">
+              <div id="peepInput">
+                  <input type="text" id="peepText" name="peep"><br>
+                  <input type="submit" id="submitPeep"  name="submitPeep" value="Peep" style="color: white; background-color: #479EC9; border: 0; font-size: 14px;">
               </div>
       </form>
     </div>
@@ -135,7 +140,7 @@ function reloadPeeps(){
         reloadPeeps();
       });
     });
- </script>
+</script>
 
 <script type='text/javascript'>
     $("#sign_out").submit(function(event) {
@@ -152,5 +157,6 @@ function reloadPeeps(){
       });
     });
 </script>
+
 </body>
 </html>
