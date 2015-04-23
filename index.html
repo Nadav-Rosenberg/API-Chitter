@@ -2,8 +2,45 @@
 <html>
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
-<!--    // <script type="text/javascript" src="src/Chitter.js"></script>
- -->
+ <!--  // <script type="text/javascript" src="public/src/Chitter.js"></script> -->
+
+ <script>
+ $(document).ready(function() {
+  $.getJSON( "http://localhost:9292//api/all_peeps", function( data ) {
+      var peep_string = '<ul>'
+    for (var i = 0; i < data.length; i++) {
+
+        peep_string = peep_string.concat('<li>',data[i]["text"],' by ',data[i]["author"],' at ',data[i]["time"],'</li>');
+    };
+    peep_string.concat('</ul>');
+    $('#peepList').html(peep_string);
+  });
+});
+
+// setInterval(function(){
+// $.getJSON( "http://localhost:9292//api/all_peeps", function( data ) {
+//     var peep_string = '<ul>'
+//   for (var i = 0; i < data.length; i++) {
+
+//       peep_string = peep_string.concat('<li>',data[i]["text"],' by ',data[i]["author"],' at ',data[i]["time"],'</li>');
+//   };
+//   peep_string.concat('</ul>');
+//   $('#peepList').html(peep_string);
+// });
+// },6000);
+ 
+function reloadPeeps(){
+  $.getJSON( "/api/all_peeps", function( data ) {
+    var peep_string = '<ul>'
+    for (var i = 0; i < data.length; i++) {
+      peep_string = peep_string.concat('<li>',data[i]["text"],' by ',data[i]["author"],' at ',data[i]["time"],'</li>');
+    };
+    peep_string.concat('</ul>');
+    $('#peepList').html(peep_string);
+  });
+}
+ </script>
+
 </head>
 
 <body>
@@ -42,10 +79,31 @@
         var posting = $.post( url, { peep: $('#peepText').val() } );
         console.log(posting);
         posting.done(function( data ) {
+          reloadPeeps();
+          // should change method if we're signed out
           alert('Peep recieved');
         });
       });
    </script>
+
+   <form id="sign_out" action="/api/sign_out" title="" method="post">
+          <div>       
+              <input type="submit" id="submitSignOut"  name="submitSignOut" value="Sign Out">
+          </div>
+  </form>
+  <script type='text/javascript'>
+      $("#sign_out").submit(function(event) {
+        event.preventDefault();
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        var posting = $.post( url );
+        posting.done(function( data ) {
+          alert('Signed Out');
+        });
+      });
+   </script>
+
+
 
   <div id="peepList">Hello and Welcome to Chitter!!! THese are the recent messages</div>
 </body>
