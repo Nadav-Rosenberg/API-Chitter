@@ -133,6 +133,10 @@ function reloadPeeps(){
       var posting = $.post( url, { peep: $('#peepText').val() } );
       posting.done(function( data ) {
         reloadPeeps();
+        var status = posting.responseText;
+        if(status == 'You must be signed in to peep!'){
+          alert(status);
+        };
       });
     });
  </script>
