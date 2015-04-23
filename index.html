@@ -78,8 +78,8 @@ function reloadPeeps(){
 
   <form id="signIn" action="/api/sign_in" title="" method="post">
           <div>
-              Email: <input type="text" id="email" name="email" >          
-              Passowrd: <input type="password" id="password" name="password" >
+              Email: <input type="text" id="sIemail" name="email" >          
+              Passowrd: <input type="password" id="sIpassword" name="password" >
               <input type="submit" id="submitButton"  name="submitButton" value="Sign In">
           </div>
   </form>
@@ -88,7 +88,7 @@ function reloadPeeps(){
         event.preventDefault();
         var $form = $( this ),
             url = $form.attr( 'action' );
-        var obj = { email: $('#email').val(), password: $('#password').val() };
+        var obj = { email: $('#sIemail').val(), password: $('#sIpassword').val() };
         var posting = $.post( url, obj );
         posting.done(function( data ) {
           alert('success');
@@ -117,7 +117,7 @@ function reloadPeeps(){
       });
    </script>
 
-   <form id="sign_out" action="/api/sign_out" title="" method="post">
+   <form id="sign_out" action="/api/sign_out" title="" method="get">
           <div>       
               <input type="submit" id="submitSignOut"  name="submitSignOut" value="Sign Out">
           </div>

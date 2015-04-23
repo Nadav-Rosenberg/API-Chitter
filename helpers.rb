@@ -2,6 +2,7 @@ require 'json'
 module Helpers
 
   def sign_up
+    p params
     email = params["email"]
     name = params["name"]
     user_name = params["user_name"]
@@ -20,6 +21,7 @@ module Helpers
   end
 
   def sign_in
+    p params
     email, password = params["email"], params["password"]
     user = User.authenticate(email, password) 
       if user
