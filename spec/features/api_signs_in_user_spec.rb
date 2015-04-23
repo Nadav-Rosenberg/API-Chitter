@@ -17,7 +17,7 @@ feature 'Signing in to Chitter' do
   scenario 'user signs in to Chitter with correct details' do
     page.driver.post "api/sign_up", sign_up_request
     response = page.driver.post "/api/sign_in", sign_in_request
-    expect(response.body).to eq("Welcome, Testy!")
+    expect(response.body).to eq("{\"message\":\"Welcome, Testy!\"}")
   end
 
 

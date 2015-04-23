@@ -1,32 +1,32 @@
-API Chiiter: 
+API Chiiter:
 
-Building micro-blogging site. Creating seperate backend and frontend. 
+Building micro-blogging site. Creating seperate backend and frontend.
 
-4 days project: 
+4 days project:
 Day 1 + Day 2: bulding a backend API using Postgres, DataMapper, and Rspec
 Day 3: cearing a one page frotend, using JS, jQuery, AJAX, and JSON
 Day 4: making a beatiful frontend using CSS
 
-Functionality of the service: 
+Functionality of the service:
 
 1. sign up
-2. sign in 
+2. sign in
 3. sign out
 4. post a peep
 5. see peeps
-6. (reply to a peep) 
-7. (forger password) 
+6. (reply to a peep)
+7. (forger password)
 
-Reflections: 
+Reflections:
 
-Starting a project: 
+Starting a project:
 - Gemfile
-- $ bundle 
-- Rakefile 
+- $ bundle
+- Rakefile
 - server.rb
 - $ rakup
 - config.ru
-- add a database 
+- add a database
 - data_mapper_setup
 
 Testing
@@ -56,8 +56,8 @@ Day 2
   -Finishing backend API, including sessions
   - Today we want an MVP of the front end
 
-Day3 
-  -Finishing the front end 
+Day3
+  -Finishing the front end
   - potentially start styling
 Day 4
   additional features
@@ -66,19 +66,19 @@ Day 4
   - Styling
   - forger password
 
-Sessions: 
+Sessions:
 
 - sessions write identifying data to our cookie file. We detremine what loging in and loging out mean
 
 - Sinatra creates an sutomatic session key-vlaue hash (posssibly as a class variable), whenever it recieves an HTTP request.
 
-- In order to text using curl one must require curl to store cookies using -c (to edit cookies) and -b (to use cookies) 
+- In order to text using curl one must require curl to store cookies using -c (to edit cookies) and -b (to use cookies)
 
-Curl commands: 
+Curl commands:
 
-Sign Up: 
+Sign Up:
 curl --data "email=nadav@nadav.com&name=Nadav&user_name=Nad&password=123&password_confirmation=123" http://localhost:9292/api/sign_up
-#2 user: 
+#2 user:
 curl --data "email=rich@rich.com&name=Rich&user_name=Richi&password=123&password_confirmation=123" http://localhost:9292/api/sign_up
 # Heruko
 curl --data "email=nadav@nadav.com&name=Nadav&user_name=Nad&password=123&password_confirmation=123" https://immense-beach-9973.herokuapp.com/api/sign_up
@@ -94,20 +94,45 @@ curl -c cookies.txt --data "email=nadav@nadav.com&password=123" https://immense-
 
 
 
-New Peep: 
+New Peep:
 curl -b cookies.txt --data "peep=Test+Peep" http://localhost:9292/api/new_peep
 #2 user
 curl -b cookies_2.txt --data "peep=Test+Peep" http://localhost:9292/api/new_peep
-# Heruko 
+# Heruko
 curl -b cookies.txt --data "peep=Test+Peep" https://immense-beach-9973.herokuapp.com/api/new_peep
 
 All Peeps:
 curl http://localhost:9292/api/all_peeps
-#Heruko 
+#Heruko
 curl https://immense-beach-9973.herokuapp.com/api/all_peeps
 
 
-Sign Out: 
+Sign Out:
 curl -c cookies.txt --data "" http://localhost:9292/api/sign_out
 #Heruko
 curl -c cookies.txt --data "" https://immense-beach-9973.herokuapp.com/api/sign_out
+
+
+Day 3 PM
+cookies can't be set from local files, which creates issues with sessions. Hosting the front end on the same server as the backend seems to
+get round the problem, maybe due to rack holding the cookies???
+
+Learnt a lot about JSON and how to submit get and post requests to the server using jQuery
+
+Plan for day 4.
+Have alerts based on the servers responce to our get and post requests.
+
+Talk to a coach about reseperating the front and back end. Note: once the app is complete we could make a seperate rackup server for
+the front end and deploy the front and back end to heroku seperatley so long as we remember to set all the request paths correctly.
+
+make a relation between users and peeps
+and be able to sort by users peeps
+
+questions for coaches:
+sessions, local host issue and seperating the front and back end more
+
+Styling:
+- Research good layouts
+- Mockup in Photoshop
+- Clean up HTML
+- Load and verify reset.css and stylesheet.css using background color
